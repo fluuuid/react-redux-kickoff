@@ -9,6 +9,10 @@ const initialState = {
     homeSection2Body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     signUpPlaceholderName: 'Your Name',
     signUpPlaceholderCampus: 'Your Campus',
+    allowLocation: 'Before we start, we need to get access to your location, click below to allow',
+    allowLocationCTA: 'Allow location',
+    allowCamera: 'Now allow access to your camera',
+    allowCameraCTA: 'Allow Camera',
     getReady: 'Get Ready'
   }
 }

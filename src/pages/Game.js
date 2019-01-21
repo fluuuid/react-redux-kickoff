@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
+import React, { Fragment, Component } from 'react'
 import { withTheme } from 'styled-components'
 import { connect } from 'react-redux'
-import { Section } from '../styles/components'
+import { Section, Button, Body } from '../styles/components'
+import { getCamera, getLocation } from '../reducers/capabilities'
 
 class Game extends Component {
-  shouldComponentUpdate () {
-    return false
+  shouldComponentUpdate (nextProps) {
+    if (this.props.hasCamera && this.props.hasLocation) return false
+    return true
   }
 
   componentDidMount () {
@@ -17,14 +19,37 @@ class Game extends Component {
   }
 
   render () {
-    const { theme } = this.props
+    const { getCamera, getLocation, theme, strings, hasCamera, hasLocation } = this.props
+
     return (
-      <Section margin={theme.header.height}>
-        this is the game page
-        <canvas />
-      </Section>
+      <Fragment>
+        {!hasLocation && !hasCamera &&
+          <Section margin={theme.header.height}>
+            <Body align='center'>{strings.allowLocation}</Body>
+            <Button onClick={getLocation}>{strings.allowLocationCTA}</Button>
+          </Section>
+        }
+        {!hasCamera && hasLocation &&
+          <Section margin={theme.header.height}>
+            <Body align='center'>{strings.allowCamera}</Body>
+            {<Button onClick={getCamera}>{strings.allowCameraCTA}</Button>}
+          </Section>
+        }
+        {hasCamera && hasLocation &&
+          <Section margin={theme.header.height}>
+            <Body align='center'>This is the Game</Body>
+          </Section>
+        }
+      </Fragment>
     )
   }
 }
 
-export default connect()(withTheme(Game))
+export default connect(({ ui: { strings }, capabilities: { hasCamera, hasLocation } }) => ({
+  hasCamera,
+  strings,
+  hasLocation
+}), {
+  getCamera,
+  getLocation
+})(withTheme(Game))

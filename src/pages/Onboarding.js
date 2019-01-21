@@ -2,7 +2,13 @@ import React, { Component } from 'react'
 import styled, { withTheme } from 'styled-components'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import { Section, Heading, SubmitButton, Input, Select } from '../styles/components'
+import {
+  Section,
+  Heading,
+  SubmitButton,
+  Input,
+  Select
+} from '../styles/components'
 import { Routes } from '../routes'
 
 const Form = styled.form`
@@ -19,7 +25,7 @@ class Onboarding extends Component {
   }
 
   render () {
-    const { theme, strings } = this.props
+    const { theme, strings, campus } = this.props
     return (
       <Section margin={theme.header.height}>
         <Heading>{strings.getReady}</Heading>
@@ -27,10 +33,9 @@ class Onboarding extends Component {
           <Input placeholder={strings.signUpPlaceholderName} />
           <Select>
             <option value=''>{strings.signUpPlaceholderCampus}</option>
-            <option value='campus-1'>Campus 1</option>
-            <option value='campus-2'>Campus 2</option>
-            <option value='campus-3'>Campus 3</option>
-            <option value='campus-4'>Campus 4</option>
+            {Object.keys(campus).map(c => (
+              <option key={c} value={c}>{campus[c]}</option>
+            ))}
           </Select>
           <SubmitButton type='submit' value='Submit' />
         </Form>
@@ -39,6 +44,7 @@ class Onboarding extends Component {
   }
 }
 
-export default connect(({ ui: { strings } }) => ({
-  strings
+export default connect(({ contentful: { campus }, ui: { strings } }) => ({
+  strings,
+  campus
 }))(withRouter(withTheme(Onboarding)))
