@@ -44,7 +44,7 @@ class Onboarding extends Component {
   }
 }
 
-export default connect(({ contentful: { campus }, ui: { strings } }) => ({
+export default connect(({ contentful: { campus, strings } }) => ({
   strings,
   campus
 }))(withRouter(withTheme(Onboarding)))

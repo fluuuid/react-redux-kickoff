@@ -45,7 +45,7 @@ class Game extends Component {
   }
 }
 
-export default connect(({ ui: { strings }, capabilities: { hasCamera, hasLocation } }) => ({
+export default connect(({ contentful: { strings }, capabilities: { hasCamera, hasLocation } }) => ({
   hasCamera,
   strings,
   hasLocation

@@ -28,6 +28,6 @@ const Home = ({ theme, strings }) => (
   </Fragment>
 )
 
-export default connect(({ ui: { strings } }) => ({
+export default connect(({ contentful: { strings } }) => ({
   strings
 }))(withTheme(Home))
