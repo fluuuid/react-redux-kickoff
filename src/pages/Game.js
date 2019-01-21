@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { withTheme } from 'styled-components'
 import { connect } from 'react-redux'
+import { Section } from '../styles/components'
 
 class Game extends Component {
   shouldComponentUpdate () {
@@ -15,13 +17,14 @@ class Game extends Component {
   }
 
   render () {
+    const { theme } = this.props
     return (
-      <div>
+      <Section margin={theme.header.height}>
         this is the game page
         <canvas />
-      </div>
+      </Section>
     )
   }
 }
 
-export default connect()(Game)
+export default connect()(withTheme(Game))

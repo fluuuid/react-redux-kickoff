@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { ReactComponent as LogoSVG } from '../../assets/images/logo.svg'
+import { Routes } from '../../routes'
 
 const Wrapper = styled.header`
   position: relative;
@@ -15,7 +16,7 @@ const Logo = styled.div``
 
 const Header = () => (
   <Wrapper>
-    <Logo as={Link} to='/'>
+    <Logo as={Link} to={Routes.home}>
       <LogoSVG />
     </Logo>
   </Wrapper>

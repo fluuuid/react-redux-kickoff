@@ -1,4 +1,7 @@
 const Theme = {
+  header: {
+    height: 111
+  },
   color: {
     black: '#000000',
     grey: '#CCCCCC',

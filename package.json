@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fluuuid/math-utils": "^1.2.15",
     "history": "^4.7.2",
     "normalize.css": "^8.0.1",
     "react": "^16.7.0",
