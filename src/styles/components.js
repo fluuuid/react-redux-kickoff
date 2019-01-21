@@ -48,7 +48,6 @@ export const Input = styled.input`
   ${Field};
   background-color: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.black};
-  margin: 0 auto 1rem;
   text-align: left;
   width: 100%;
 `
@@ -57,7 +56,13 @@ export const Select = styled.select`
   ${Field};
   background-color: ${({ theme }) => theme.color.white};
   border: 1px solid ${({ theme }) => theme.color.black};
-  margin: 0 auto;
   text-align: left;
   width: 100%;
+`
+
+export const SubmitButton = styled(Input)`
+  text-align: center;
+  background-color: ${({ theme }) => theme.color.black};
+  border: 1px solid ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.white};
 `

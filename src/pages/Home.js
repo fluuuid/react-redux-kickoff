@@ -14,22 +14,20 @@ const colors = [
   'rgba(255, 22, 84, 1)'
 ]
 
-const Home = ({ theme }) => (
+const Home = ({ theme, strings }) => (
   <Fragment>
     <Section margin={theme.header.height} bgColor={colors[rrandom(colors.length)]}>
-      <Heading>Scavanger Hunt</Heading>
-      <Body align='center'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </Body>
-      <Button as={Link} to={Routes.onboarding}>Let's go</Button>
+      <Heading>{strings.homeSection1Heading}</Heading>
+      <Body align='center'>{strings.homeSection1Body}</Body>
+      <Button as={Link} to={Routes.onboarding}>{strings.homeSection1CTA}</Button>
     </Section>
     <Section bgColor={colors[rrandom(colors.length)]}>
-      <Heading>An AR Scavanger Hunt</Heading>
-      <Body align='center'>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-      </Body>
+      <Heading>{strings.homeSection2Heading}</Heading>
+      <Body align='center'>{strings.homeSection2Body}</Body>
     </Section>
   </Fragment>
 )
 
-export default connect()(withTheme(Home))
+export default connect(({ ui: { strings } }) => ({
+  strings
+}))(withTheme(Home))
